@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <base href="/">
+    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<link rel="icon" href="https://kulfyapp.com/assets/logos/favicon.ico" type="image/x-icon" >
+	<title>Kulfy App - The largest Hindi, Tamil & Telugu GIF library on your mobile</title>
+    <!-- Bootstrap -->
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css></script>
+    <script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js></script>
+    <script type="text/javascript" src="js/mp.mansory.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	
+	 <!-- start Rajasekhar css links  -->
+	 <!-- //for-mobile-apps -->
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+		<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+         <link rel="stylesheet" type="text/css" href="new/css/style.css">
+         <link rel="stylesheet" type="text/css" href="css/mobile-style.css">
+		<link href="css/simpleLightbox.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+		<link rel="stylesheet" href="css/style_external_kulfy.css" type="text/css"/>			
+		<!--fonts-->
+		<link href="//fonts.googleapis.com/css?family=Comfortaa:300,400,700&amp;subset=cyrillic,cyrillic-ext,greek,latin-ext,vietnamese" rel="stylesheet">
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+		<!--//fonts-->
+	 
+	 <!-- End Rajasekhar css links  -->
+	
+	<style>
+		.caret{
+		margin-top: 6px;
+		margin-right: -11px;}
+	</style>
+	
+<script src="script.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<script type="text/javascript">
+		(function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
+		branch.init('key_live_cnEuwE3dAWio1FOqdcbQmlaiysc2GKRN');
+	</script> 
+
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106735548-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106735548-1');
+</script>
+      
+  </head>
+
+  <body ng-app="myApp"> 
+
+<!-- Facebook  Sharing -->
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '357008451302729',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<header ng-controller="SearchController">
+  <nav class="navbar nav-desktop">
+    <div class="brand">
+      <a class="navbar-brand klogo" href="#">
+        <img ng-click="showHomePage()" alt="Kulfy App" src="img/k-logo.png">
+      </a>
+      <form ng-submit="getResults()" class="navbar-form navbar-left" style="width:100%">
+      <div class="form-group" style="width:100%">
+                <autocomplete class="form-control my-search-bar" style="width:80%; float:left;" ng-model="result" attr-placeholder="Type to search Kulfys..." click-activation="true0" data="movies" on-type="getSuggestions" no-auto-sort on-select="getSearchResults"></autocomplete>
+                </div>
+      
+        
+      </form>
+    </div>
+    <div class="menu">
+      <ul class="nav navbar-nav">
+        <li class="active"><a ng-click="showHomePage()" href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="https://blog.kulfyapp.com/" target="_blank">Blogs</a></li>     
+         <!--<li><a href="#">Settings</a></li> -->
+       <li><a href="#" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="img/settings-inactive.png"></a></a></li>
+        <li><a href="https://kulfyapp.com/getKulfy" target="_blank" class="download">Get App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- mobile -->
+  <nav class="nav-mobile" ng-controller="SearchController">
+      <ul class="nav-icons">
+          <li><a class="home.html" href="#"><img ng-click="showHomePage()" alt="Brand" src="img/kulfy.png" width="80"></a></li>
+          <li><a ng-click="showSearchBox()" ><img alt="Brand" src="img/search-inactive.png"></a></li>
+		 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="img/settings-inactive.png"></button>
+          <li><a href="https://kulfyapp.com/getKulfy" target="_blank" class="download">Get App</a></li>
+        <!--  <li><a href="collection.html"><img alt="Brand" src="img/collection-inactive.png"></a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="img/settings-inactive.png"></a></a></li>
+          <li><a href="http://kulfyapp.com" class="download">Get App</a></li> 
+          -->
+        </ul>
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Settings</h4>
+        </div>
+         <div class="modal-body">
+		 
+		<h4>Languages</h4>
+         <div class="checkbox" ng-repeat="lan in data">
+			<label><input  type="checkbox" ng-checked="{{lan.checked}}"  ng-click="update(lan.language,lan.checked,$index)" value="{{lan.language}}" >{{lan.language}}</label>
+		 </div>
+		
+		  
+		  <h4>Types</h4>
+         <div class="checkbox" ng-repeat="types in type">
+			<label><input type="checkbox" ng-checked="{{types.checked}}" value="{{types.type}}" ng-click="change(types.type,types.checked,$index)" >{{types.types}}</label>
+		 </div>
+		  
+        </div>
+        <div class="modal-footer">
+         
+		   <center><button type="button" class="btn btn-default"  ng-click="getData('hai')" data-dismiss="modal" >save</button></center>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+        <!-- MOBILE SEARCH -->
+<div class="mobile-search" id="search-mob" ng-show="show_search">
+    <form  ng-submit="getResults()" class="navbar-form navbar-left" style="width:100%">
+    <div class="form-group" style="width:100%">
+       <autocomplete class="form-control my-search-bar" style="width:80%; float:left;" ng-model="result" attr-placeholder="Type to search Kulfys..." click-activation="true0" data="movies" on-type="getSuggestions" no-auto-sort on-select="getSearchResults"></autocomplete>
+      &nbsp;
+      <div class="cancel">
+      <a href="#" class="mob-cancel" ng-click="hideSearchBox()" >Cancel</a>
+      </div>
+    </div>
+  </form>
+  <!--
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="subtitle">Recent Searches</h4>
+        <ul>
+          <li>search word</li>
+          <li>search word</li>
+          <li>search word</li>
+          <li>search word</li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+</div>
+  </nav>
+</header>
+
+<section ng-controller="SearchController" class="container about" id="about">
+  <div class="row">
+    <div class="col-md-12">
+        <img ng-click="showHomePage()" src="img/kulfy.png" alt="" width="100">
+        <h4 class="desc">Indian GIFs for your Chat </h4>
+    </div>
+    <div class="col-md-12">
+        
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<div class="kulfy-container" ng-controller="KulfyDetailController as tvcontroller">
+<div class="kulfy-detail"  ng-show="show_details" >
+<div class="container details-block">
+    <div class="row">
+        <div class="col-md-6 img-block">
+           <div class="kulfy-images">
+
+<img class="kulfy-images-detail" src="{{detail_image_url}}" ng-show="show_image"/>
+</div>
+
+<div class="videogular-detail-container" ng-show="show_video">
+    <videogular vg-player-ready="tvcontroller.onPlayerReady($API)" vg-theme="tvcontroller.config.theme.url" vg-auto-play='true' vg-loop='true' vg-plays-inline="'true'" vg-native-fullscreen="'false'">
+        <vg-media vg-src="tvcontroller.config.sources"
+                  vg-tracks="tvcontroller.config.tracks">
+        </vg-media>
+
+        <vg-controls vg-autohide="true" vg-autohide-time="1000">
+            <vg-play-pause-button></vg-play-pause-button>
+            <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+            <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+            </vg-scrub-bar>
+            <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+            <vg-volume>
+                <vg-mute-button></vg-mute-button>
+                <vg-volume-bar></vg-volume-bar>
+            </vg-volume>
+            <vg-fullscreen-button></vg-fullscreen-button>
+        </vg-controls>
+
+        <vg-overlay-play></vg-overlay-play>
+    </videogular>
+</div>
+        </div>
+        <div class="col-md-6 desc-block">
+            <div class="row">
+                <div class="col-md-12 detail-title">
+                    <h3> {{kulfy_name|uppercase}}</h3>
+                </div>
+                <div class="col-md-12">
+                    <h3 class="subtitle">Share</h3>
+                </div>
+
+                <div class="col-md-12 share-list">
+
+                <a ng-click-copy="{{url}}"  class="share-btn" >
+                  <img src="img/copy.jpeg" width="50"  />
+                </a>
+                <!--  <a ng-click="download()" class="share-btn" >
+                  <img src="img/arrow-download-icon.png" width="50"  />
+                </a>
+
+               
+                    <a ng-click='share()' class="share-btn" id="fb">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Слой_1" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64" xml:space="preserve" fill="#ffffff">
+                            <linearGradient id="f_1__44003" gradientUnits="userSpaceOnUse" x1="37.6462" y1="14.5" x2="37.6462" y2="56.8779" spreadMethod="reflect" fill="#ffffff">
+                                <stop offset="0" style="stop-color:#ffffff" fill="#ffffff"/>
+                                <stop offset="1" style="stop-color:#ffffff" fill="#ffffff"/>
+                            </linearGradient>
+                            <path id="f_2_" style="fill:url(#f_1__44003)" d="M42,56V38h5.358l0.934-8H42v-4.457c0-2.097-0.131-3.527,2.877-3.527L48,22.014v-6.479  c-1-0.088-2.487-0.285-5.136-0.285c-5.531,0-8.864,3.376-8.864,9.576V30h-7v8h7v18H42z" fill="#ffffff"/>
+                            <linearGradient id="SVGID_1__44003" gradientUnits="userSpaceOnUse" x1="32" y1="6.8333" x2="32" y2="58.0174" spreadMethod="reflect" fill="#ffffff">
+                                <stop offset="0" style="stop-color:#ffffff" fill="#ffffff"/>
+                                <stop offset="1" style="stop-color:#ffffff" fill="#ffffff"/>
+                            </linearGradient>
+                            <path style="fill:url(#SVGID_1__44003)" d="M50,57H14c-3.859,0-7-3.141-7-7V14c0-3.859,3.141-7,7-7h36c3.859,0,7,3.141,7,7v36  C57,53.859,53.859,57,50,57z M14,9c-2.757,0-5,2.243-5,5v36c0,2.757,2.243,5,5,5h36c2.757,0,5-2.243,5-5V14c0-2.757-2.243-5-5-5H14z  " fill="#ffffff"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="share-btn" id="wp">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" version="1.1" fill="#ffffff"><g id="surface1" fill="#ffffff"><path style=" stroke:none;fill-rule:nonzero;fill-opacity:1" d="M 39.855469 10.152344 C 35.894531 6.1875 30.625 4.003906 25.011719 4 C 13.445313 4 4.027344 13.410156 4.023438 24.980469 C 4.023438 28.523438 4.921875 32.015625 6.621094 35.101563 L 3.894531 45.058594 C 3.796875 45.402344 3.894531 45.773438 4.144531 46.027344 C 4.335938 46.21875 4.59375 46.324219 4.855469 46.324219 C 4.941406 46.324219 5.027344 46.3125 5.109375 46.289063 L 15.328125 43.609375 C 18.300781 45.15625 21.636719 45.976563 25.011719 45.976563 C 36.582031 45.976563 45.996094 36.566406 46 24.996094 C 46.003906 19.390625 43.820313 14.117188 39.855469 10.152344 Z M 34.789063 32.121094 C 34.375 33.289063 32.378906 34.351563 31.417969 34.496094 C 30.558594 34.625 29.46875 34.679688 28.273438 34.296875 C 27.546875 34.066406 26.617188 33.761719 25.425781 33.246094 C 20.414063 31.082031 17.144531 26.039063 16.894531 25.707031 C 16.644531 25.371094 14.855469 23 14.855469 20.542969 C 14.855469 18.085938 16.144531 16.878906 16.601563 16.378906 C 17.0625 15.878906 17.601563 15.753906 17.933594 15.753906 C 18.269531 15.753906 18.601563 15.757813 18.890625 15.769531 C 19.199219 15.785156 19.609375 15.652344 20.015625 16.628906 C 20.433594 17.628906 21.429688 20.085938 21.554688 20.335938 C 21.679688 20.585938 21.761719 20.878906 21.597656 21.210938 C 21.429688 21.542969 21.347656 21.75 21.097656 22.042969 C 20.847656 22.335938 20.574219 22.695313 20.347656 22.917969 C 20.097656 23.167969 19.839844 23.4375 20.128906 23.9375 C 20.421875 24.4375 21.421875 26.070313 22.90625 27.394531 C 24.8125 29.097656 26.425781 29.625 26.921875 29.875 C 27.421875 30.125 27.714844 30.082031 28.003906 29.75 C 28.296875 29.414063 29.253906 28.289063 29.585938 27.789063 C 29.917969 27.289063 30.253906 27.375 30.710938 27.539063 C 31.167969 27.707031 33.625 28.914063 34.121094 29.164063 C 34.621094 29.414063 34.953125 29.539063 35.078125 29.746094 C 35.203125 29.957031 35.207031 30.957031 34.789063 32.121094 Z " fill="#ffffff"/></g></svg>
+                    </a>
+                    <a href="#" class="share-btn" id="tw">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="#ffffff"><path d="M28,8.557c-0.883,0.392-1.832,0.656-2.828,0.775c1.017-0.609,1.797-1.574,2.165-2.724c-0.951,0.564-2.005,0.974-3.127,1.195 c-0.898-0.957-2.178-1.555-3.594-1.555c-2.719,0-4.924,2.205-4.924,4.924c0,0.386,0.044,0.762,0.127,1.122 c-4.092-0.205-7.72-2.166-10.149-5.145C5.247,7.876,5.004,8.722,5.004,9.625c0,1.708,0.869,3.215,2.19,4.098 c-0.807-0.026-1.566-0.247-2.23-0.616c0,0.021,0,0.041,0,0.062c0,2.386,1.697,4.376,3.95,4.828C8.501,18.11,8.066,18.17,7.616,18.17 c-0.317,0-0.626-0.031-0.926-0.088c0.627,1.956,2.445,3.38,4.6,3.42c-1.685,1.321-3.808,2.108-6.115,2.108 c-0.397,0-0.789-0.023-1.175-0.069c2.179,1.397,4.767,2.212,7.548,2.212c9.057,0,14.009-7.503,14.009-14.01 c0-0.213-0.005-0.426-0.014-0.637C26.505,10.411,27.34,9.544,28,8.557z" fill="#ffffff"/></svg>
+                    </a>
+                    <a href="#" class="share-btn" id="sh">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" version="1.1" fill="#ffffff"><g id="surface1" fill="#ffffff"><path style=" stroke:none;fill-rule:nonzero;fill-opacity:1" d="M 25 0.59375 L 24.28125 1.28125 L 16.28125 9.28125 C 15.882813 9.679688 15.882813 10.320313 16.28125 10.71875 C 16.679688 11.117188 17.320313 11.117188 17.71875 10.71875 L 24 4.4375 L 24 32 C 23.996094 32.359375 24.183594 32.695313 24.496094 32.878906 C 24.808594 33.058594 25.191406 33.058594 25.503906 32.878906 C 25.816406 32.695313 26.003906 32.359375 26 32 L 26 4.4375 L 32.28125 10.71875 C 32.679688 11.117188 33.320313 11.117188 33.71875 10.71875 C 34.117188 10.320313 34.117188 9.679688 33.71875 9.28125 L 25.71875 1.28125 Z M 7 16 L 7 50 L 43 50 L 43 16 L 33 16 C 32.640625 15.996094 32.304688 16.183594 32.121094 16.496094 C 31.941406 16.808594 31.941406 17.191406 32.121094 17.503906 C 32.304688 17.816406 32.640625 18.003906 33 18 L 41 18 L 41 48 L 9 48 L 9 18 L 17 18 C 17.359375 18.003906 17.695313 17.816406 17.878906 17.503906 C 18.058594 17.191406 18.058594 16.808594 17.878906 16.496094 C 17.695313 16.183594 17.359375 15.996094 17 16 Z " fill="#ffffff"/></g></svg>
+                    </a>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container tags-block">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="subtitle">Tags</h1>
+        </div>
+        <div class="col-md-12 tags-list">
+         <a  ng-repeat='tag in kulfy_tags track by $index' href="" ng-click="getTags($index)" class="tag">{{tag}}</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<div ng-controller="HomeCtrl as controller">
+    <div class="kulfy-tv-container" ng-show='showKulfyTV'>
+        <videogular vg-player-ready="controller.onPlayerReady($API)" vg-complete="controller.onCompleteVideo()" vg-theme="controller.config.theme.url" vg-auto-play='true' vg-plays-inline="'true'" vg-native-fullscreen="'false'">
+            <vg-media vg-src="controller.config.sources"
+                      vg-tracks="controller.config.tracks">
+            </vg-media>
+
+            <vg-controls vg-autohide="true" vg-autohide-time="1000">
+             <div class="player-controls">
+                <vg-play-pause-button></vg-play-pause-button>
+                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-scrub-bar>
+                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                </vg-scrub-bar>
+                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-volume>
+                    <vg-mute-button></vg-mute-button>
+                    <vg-volume-bar></vg-volume-bar>
+                </vg-volume>
+                <vg-fullscreen-button></vg-fullscreen-button>
+                </div>
+                <div class='tv-next'><a ng-click="controller.next()" class="tv-button" href='#'>Next</a></div>
+            </vg-controls>
+
+            <vg-overlay-play></vg-overlay-play>
+            <vg-buffering></vg-buffering>
+            <vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
+        </videogular>
+    </div>
+</div>
+
+
+<div ng-controller="KulfyController"  infinite-scroll='reddit.getSearchResults()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
+
+<div class="container"   >
+<div class="kulfy-filters" ng-show="showResultsCount">
+<a href="#" ng-click="filter('all')">All</a> | <a  href="#" ng-click="filter('gif')">GIFs</a > <!--| <a href="#" ng-click="filter('image')">Images</a> -->| <a href="#" ng-click="filter('video')">Videos</a> 
+</div><br>
+<div class="results-count" ng-show="showResultsCount"> {{reddit.total}} results found for {{reddit.keyword}}</div>
+
+
+
+<div class="" id="my-gallery-container"  >
+
+
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 padding ">
+      <div class="item" ng-repeat='item1 in reddit.kulfys1'>
+<div ng-controller="DetailCtrl as controller" class="videogular-container" ng-click="showDetails()">
+<img   ng-src="{{item1.image_url}}" />
+</div>
+    </div>
+  </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 padding">
+      <div class="item" ng-repeat='item2 in reddit.kulfys2'>
+<div ng-controller="DetailCtrl as controller" class="videogular-container" ng-click="showDetails()" >
+<img  ng-src="{{item2.image_url}}" />
+</div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+
+<!-- Google  Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89279704-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-KhKs63wEH4c0y"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-KhKs63wEH4c0y.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+                  <script type="text/javascript" src="js/angular-socialshare.js"></script>
+                <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+                <script type="text/javascript" src="js/autocomplete.js"></script>
+                <script type="text/javascript" src="js/multiselect.js"></script>
+                <script type="text/javascript" src="js/search.js"></script>
+
+                
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
+
+<script src="https://unpkg.com/videogular@2.1.2/dist/videogular/videogular.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/controls/vg-controls.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/overlay-play/vg-overlay-play.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/poster/vg-poster.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/buffering/vg-buffering.js"></script>
+ <script src="js/ng-infinite-scroll.min.js"></script>
+ <script src="js/mobile-kulfy.js"></script>
+ 
+ <!-- start rajasekhar script -->
+ <script type="text/js_kulfy/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/js_kulfy/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<script src="js/js_kulfy/responsiveslides.min.js"></script>
+<script src="js/js_kulfy/main.js"></script>	
+<script src="js/js_kulfy/bootstrap-multiselect.js"></script>	
+<script defer src="js/js_kulfy/jquery.flexslider.js"></script>
+<script src="js/js_kulfy/SmoothScroll.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/JustMaier/6ef7788709d675bd8230/raw/3d39d50e66d8d77e05656ed7dd09298be7e86f1f/ngClickCopy.js"></script>
+<script type="text/js_kulfy/javascript" src="js/move-top.js"></script>
+<script type="text/js_kulfy/javascript" src="js/easing.js"></script>
+<script src="js/js_kulfy/simpleLightbox.js"></script>
+<script src="js/js_kulfy/jquery.vide.min.js"></script>
+<script src="js/js_kulfy/angularjs-dropdown-multiselect.controller.js"></script>
+ <!-- end rajasekhar script -->
+ 
+ 
+ 
+ 
+    </body>
+</html>

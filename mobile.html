@@ -42,9 +42,21 @@
 	 <!-- End Rajasekhar css links  -->
 	
 	<style>
-		.caret{
-		margin-top: 6px;
-		margin-right: -11px;}
+		.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    background-color: red;
+}
 	</style>
 	
 <script src="script.js"></script>
@@ -133,7 +145,38 @@
           -->
         </ul>
 <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+ <!--<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+     
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Settings</h4>
+        </div>
+         <div class="modal-body">
+		 
+		<h4>Languages</h4>
+         <div class="checkbox" ng-repeat="lan in data">
+			<label><input  type="checkbox" class="round" ng-checked="{{lan.checked}}"  ng-click="update(lan.language,lan.checked,$index)" value="{{lan.language}}" >{{lan.language}}</label>
+		 </div>
+		
+		  
+		  <h4>Types</h4>
+         <div class="checkbox" ng-repeat="types in type">
+			<label><input type="checkbox" class="round" ng-checked="{{types.checked}}" value="{{types.type}}" ng-click="change(types.type,types.checked,$index)" >{{types.types}}</label>
+		 </div>
+		  
+        </div>
+        <div class="modal-footer">
+         
+		   <center><button type="button" class="btn btn-default"  ng-click="getData('hai')" data-dismiss="modal" >save</button></center>
+        </div>
+      </div>
+      
+    </div>
+  </div>-->
+   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -145,14 +188,15 @@
          <div class="modal-body">
 		 
 		<h4>Languages</h4>
-         <div class="checkbox" ng-repeat="lan in data">
-			<label><input  type="checkbox" ng-checked="{{lan.checked}}"  ng-click="update(lan.language,lan.checked,$index)" value="{{lan.language}}" >{{lan.language}}</label>
+		
+         <div class="checkbox checkbox-info " ng-repeat="lan in data">
+			<label><input  type="checkbox" class="checkbox-info checkbox-round" ng-checked="{{lan.checked}}"  ng-click="update(lan.language,lan.checked,$index)" value="{{lan.language}}" >{{lan.language}}</label>
 		 </div>
 		
 		  
-		  <h4>Types</h4>
-         <div class="checkbox" ng-repeat="types in type">
-			<label><input type="checkbox" ng-checked="{{types.checked}}" value="{{types.type}}" ng-click="change(types.type,types.checked,$index)" >{{types.types}}</label>
+		  <h4>Choose Kulfies</h4>
+         <div class="checkbox checkbox-info" ng-repeat="types in type">
+			<label><input type="checkbox" class="checkbox-round"  ng-checked="{{types.checked}}" value="{{types.type}}" ng-click="change(types.type,types.checked,$index)" >{{types.types}}</label>
 		 </div>
 		  
         </div>

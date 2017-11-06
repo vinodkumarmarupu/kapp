@@ -349,7 +349,7 @@ $scope.getData=function(data){
 	localStorage.setItem("language", languages);
 	localStorage.setItem("kulfies", kulfies);
 
-	
+	console.log(languages);
 	
 } 
 $scope.show_search = true;

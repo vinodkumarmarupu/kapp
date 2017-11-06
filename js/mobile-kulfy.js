@@ -262,8 +262,8 @@ $scope.type=[
 {	"types":"Images","checked":false},
 {	"types":"Videos","checked":true}
 ]
-var tmp=[];
-var tmp1=[];
+var languages=[];
+var kulfies=[];
 
 $scope.update=function(a,b,index){
 	
@@ -287,24 +287,24 @@ $scope.change=function(a,b,index){
 }
 
 
-$scope.getData=function(ja){
+$scope.getData=function(data){
 	
 	
 	for(i=0;i<$scope.data.length;i++){
 		if($scope.data[i].checked)
-			tmp.push($scope.data[i]);
+			languages.push($scope.data[i]);
 	}
 	for(i=0;i<$scope.type.length;i++){
 		if($scope.type[i].checked)
-			tmp1.push($scope.type[i]);
+			kulfies.push($scope.type[i]);
 	}
 
-	alert(JSON.stringify(tmp[0])+JSON.stringify(tmp[1]))
-	
-	alert(JSON.stringify(tmp1[0])+JSON.stringify(tmp1[1]))
+	localStorage.setItem("language", languages);
+	localStorage.setItem("kulfies", kulfies);
+
+	console.log(languages);
 	
 } 
-
   $scope.movies = MovieRetriever.getmovies("");
   //$scope.show_search = false;
   $scope.movies.then(function(data){

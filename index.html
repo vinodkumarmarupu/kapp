@@ -227,13 +227,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		 
 		<h4>Languages</h4>
 		
-         <div class="checkbox checkbox-info checkbox-circle" ng-repeat="lan in data">
+         <div class="checkbox checkbox-info " ng-repeat="lan in data">
 			<label><input  type="checkbox" class="checkbox-info checkbox-round" ng-checked="{{lan.checked}}"  ng-click="update(lan.language,lan.checked,$index)" value="{{lan.language}}" >{{lan.language}}</label>
 		 </div>
 		
 		  
 		  <h4>Choose Kulfies</h4>
-         <div class="checkbox checkbox-info checkbox-circle" ng-repeat="types in type">
+         <div class="checkbox " ng-repeat="types in type">
 			<label><input type="checkbox" class="checkbox-round"  ng-checked="{{types.checked}}" value="{{types.type}}" ng-click="change(types.type,types.checked,$index)" >{{types.types}}</label>
 		 </div>
 		  

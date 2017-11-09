@@ -299,7 +299,41 @@ myApp.controller('HomeCtrl',
 
 myApp.controller('SearchController', function($scope,$location,kulfyService,MovieRetriever){
 
-$scope.data=[
+
+	if(localStorage.getItem("language")){
+		console.log("lang exists");
+		/* $scope.data=[
+		{	"language":"telugu","checked":true},
+		{	"language":"tamil","checked":false},
+		{	"language":"hindi","checked":false}
+		]; */
+ $scope.data1=localStorage.getItem("language");
+ $scope.data= JSON.parse($scope.data1);
+ 
+ 
+	}
+	else{
+		console.log("lang not exists");
+		$scope.data=[
+{	"language":"telugu","checked":true},
+{	"language":"tamil","checked":false},
+{	"language":"hindi","checked":false}
+];
+	}
+	if(localStorage.getItem("kulfies")){
+		console.log("kulfies exists");
+$scope.data2=localStorage.getItem("kulfies");
+ $scope.type= JSON.parse($scope.data2);
+	}
+	else{
+		console.log("kulfies not exists");
+			$scope.type=[
+{	"types":"Gifs","checked":true},
+{	"types":"Images","checked":false},
+{	"types":"Videos","checked":true}
+] 
+	}
+/* $scope.data=[
 {	"language":"telugu","checked":true},
 {	"language":"tamil","checked":false},
 {	"language":"hindi","checked":false}
@@ -308,7 +342,7 @@ $scope.type=[
 {	"types":"Gifs","checked":true},
 {	"types":"Images","checked":false},
 {	"types":"Videos","checked":true}
-]
+] */
 var languages=[];
 var kulfies=[];
 
@@ -338,18 +372,20 @@ $scope.getData=function(data){
 	
 	
 	for(i=0;i<$scope.data.length;i++){
-		if($scope.data[i].checked)
+		//if($scope.data[i].checked)
 			languages.push($scope.data[i]);
 	}
 	for(i=0;i<$scope.type.length;i++){
-		if($scope.type[i].checked)
+		//if($scope.type[i].checked)
 			kulfies.push($scope.type[i]);
 	}
 
-	localStorage.setItem("language", languages);
-	localStorage.setItem("kulfies", kulfies);
-
-	console.log(languages);
+	localStorage.setItem("language", JSON.stringify(languages));
+	localStorage.setItem("kulfies", JSON.stringify(kulfies));
+	//localStorage.clear();
+console.log(localStorage.getItem("language"));
+	
+	
 	
 } 
 $scope.show_search = true;

@@ -41,9 +41,8 @@
 	 <!-- End Rajasekhar css links  -->
 	
 	<style>
-	
-	
-	<!-- .checkbox-round {
+
+ .checkbox-round {
     width: 1.3em;
     height: 1.3em;
     background-color: white;
@@ -53,29 +52,13 @@
     -webkit-appearance: none;
     outline: none;
     cursor: pointer;
-} -->
+} 
 
-<!-- .checkbox-round:checked {
+.checkbox-round:checked {
     background-color: red;
 }
-	 -->			
-	<!--  .round {
-  position: relative;
-}
-
-.round label {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 28px;
-}
-
-.round label:after {
+	 			
+.checkbox-round :after {
   border: 2px solid #fff;
   border-top: none;
   border-right: none;
@@ -89,19 +72,15 @@
   width: 12px;
 }
 
-.round input[type="checkbox"] {
-  visibility: show;
-}
 
-.checkbox-round input[class="checkbox-round"]:checked + label {
-   background-color: red;
+.checkbox-round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
   border-color: #66bb6a;
 }
 
-.round input[type="checkbox"]:checked + label:after {
+.checkbox-round input[type="checkbox"]:checked + label:after {
   opacity: 1;
 }
- -->
 
 .btn-default {
     color: #333;
@@ -111,8 +90,9 @@
 
 	</style>
 	
-<script src="script.js"></script>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+
+    <script src="script.js"></script>
+<!--	HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -191,7 +171,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="https://smartforms-v2.wyzerr.com/survey/59c2a5c3f1c7047706357907" target="_blank">Feedback</a></li>             
          <li><!--<a href="#">Settings</a></li> -->
         <button type="button" class="menu-btn" data-toggle="modal" data-target="#myModal">Settings</button>
-		</li>
+    </li>
         <li><a href="https://kulfyapp.com/getKulfy" target="_blank" class="download">Get App</a></li>
       </ul>
     </div>
@@ -224,24 +204,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h4 class="modal-title">Settings</h4>
         </div>
          <div class="modal-body">
-		 
-		<h3>Languages</h3>
-		
-		
+     
+    <h4>Languages</h4>
+    
          <div class="checkbox checkbox-info " ng-repeat="lan in data track by $index">
 			<label><input  type="checkbox" class="checkbox-info checkbox-round" ng-checked="{{lan.checked}}"  ng-click="update(lan.language,lan.checked,$index)" value="{{lan.language}}" >{{lan.language}}</label>
 		 </div>
-		
-		  
-		  <h4>Choose Kulfies</h4>
-         <div class="checkbox " ng-repeat="types in type track by $index">
-			<label><input type="checkbox" class="checkbox-round"  ng-checked="{{types.checked}}" value="{{types.type}}" ng-click="change(types.type,types.checked,$index)" >{{types.types}}</label>
-		 </div>
-		  
+    
+      
+      <h4>Choose Kulfies</h4>
+         <div class="checkbox " ng-repeat="types in type">
+      <label><input type="checkbox" class="checkbox-round"  ng-checked="{{types.checked}}" value="{{types.type}}" ng-click="change(types.type,types.checked,$index)" >{{types.types}}</label>
+     </div>
+      
         </div>
         <div class="modal-footer">
          
-		   <center><button type="button" class="btn btn-default"  ng-click="getData('hai')" data-dismiss="modal" >save</button></center>
+       <center><button type="button" class="btn btn-default"  ng-click="getData('hai')" data-dismiss="modal" >save</button></center>
         </div>
       </div>
       
@@ -297,7 +276,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div ng-controller="HomeCtrl as controller" ng-show='showKulfyStories'>
     <div class="kulfy-stories" >
-        <videogular ng-mouseover="setVolume()" ng-mouseleave="mute()"  ng-click="showTV()" vg-player-ready="controller.onPlayerReady($API)" vg-complete="controller.onCompleteVideo()" vg-theme="controller.config.theme.url" vg-auto-play='true' >
+        <videogular ng-mouseover="setVolume()" ng-click="showDetails()" vg-player-ready="controller.onPlayerReady($API)" vg-complete="controller.onCompleteStory($API)" vg-theme="controller.config.theme.url" vg-auto-play='true' >
             <vg-media vg-src="controller.config.sources"
                       vg-tracks="controller.config.tracks">
             </vg-media>
@@ -341,6 +320,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a  ng-click-copy="{{url}}" class="share-btn" >
                   <img src="img/copy.jpeg" width="50"  />
                 </a>
+
+               
                 <!--<a ng-click="download()" class="share-btn" >
                   <img src="img/arrow-download-icon.png" width="50"  />
                 </a>
@@ -390,7 +371,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div ng-controller="HomeCtrl as controller">
     <div class="kulfy-tv-container" ng-show='showKulfyTV'>
-        <videogular ng-mouseover="setVolume()" ng-mouseleave="mute()"  ng-click="showDetails()" vg-player-ready="controller.onPlayerReady($API)" vg-complete="controller.onCompleteVideo()" vg-theme="controller.config.theme.url" vg-auto-play='true' >
+        <videogular vg-preload='true' ng-mouseover="setVolume()" ng-mouseleave="mute()"  ng-click="showDetails()" vg-player-ready="controller.onPlayerReady($API)" vg-complete="controller.onCompleteVideo()" vg-theme="controller.config.theme.url" vg-auto-play='true' >
             <vg-media vg-src="controller.config.sources"
                       vg-tracks="controller.config.tracks">
             </vg-media>
@@ -445,6 +426,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </vg-media>
     </videogular>
 </div>
+    <div class="kulfy-title">
+        <a href="#">{{item1.name}}</a>
+      </div>
     </div>
   </div>
 
@@ -458,6 +442,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </vg-media>
     </videogular>
 </div>
+    <div class="kulfy-title">
+        <a href="#">{{item2.name}}</a>
+      </div>
     </div>
   </div>
 
@@ -471,6 +458,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </vg-media>
     </videogular>
 </div>
+    <div class="kulfy-title">
+        <a href="#">{{item3.name}}</a>
+      </div>
     </div>
   </div>
 
@@ -484,6 +474,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </vg-media>
     </videogular>
 </div>
+    <div class="kulfy-title">
+        <a href="#">{{item4.name}}</a>
+      </div>
     </div>
   </div>
 
@@ -564,8 +557,9 @@ qacct:"p-KhKs63wEH4c0y"
 <script src="https://unpkg.com/videogular@2.1.2/dist/overlay-play/vg-overlay-play.js"></script>
 <script src="https://unpkg.com/videogular@2.1.2/dist/poster/vg-poster.js"></script>
 <script src="https://unpkg.com/videogular@2.1.2/dist/buffering/vg-buffering.js"></script>
+<script src="https://unpkg.com/videogular@2.1.2/dist/buffering/vg-buffering.js"></script>
  <script src="js/ng-infinite-scroll.min.js"></script>
- <script src="js/kulfy.js"></script>
+ <script type="text/javascript" src="js/kulfy.js"></script>
  
  <!-- start rajasekhar script -->
  <script type="text/js_kulfy/javascript" src="js/jquery-2.1.4.min.js"></script>

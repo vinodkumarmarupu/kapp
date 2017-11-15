@@ -78,32 +78,36 @@ myApp.service("kulfyService",function($http,$q,$location,$cookies,$routeParams){
     }
 
     var deffered = $q.defer();
+    var dashboard_deffered = $q.defer();
     if(kulfy_id){
         var url = "https://api.kulfyapp.com/gifs/getKulfy?id="+kulfy_id;
         $http.get(url).success(function(data){
              deffered.resolve(data);
         })
+    }else{
+
+        var url = "https://api.kulfyapp.com/gifs/getDashboard?skip=0&limit=95&language=telugu";
+        $http.get(url).success(function(data){
+        dashboard_deffered.resolve(data);
+         })
+    }
+
+    this.getDashboardData = function () {
+        return dashboard_deffered.promise;
     }
 
     this.getKulfyData = function () {
         return deffered.promise;
     }
 
-    var dashboard_deffered = $q.defer();
+    
 
    var lang = $cookies.get('AKC');
    if(!lang){
      lang = 'telugu';
    }
 
-    var url = "https://api.kulfyapp.com/gifs/getDashboard?skip=0&limit=95&language="+lang;
-    $http.get(url).success(function(data){
-        dashboard_deffered.resolve(data);
-    })
 
-    this.getDashboardData = function () {
-        return dashboard_deffered.promise;
-    }
 })
 
 
@@ -165,17 +169,53 @@ myApp.controller('HomeCtrl',
                 tv_item = {};
              }
         });
+
+             var promise = kulfyService.getKulfyData();
+             $scope.kulfy_name = '';
+             $scope.kulfy_tags = [];
+             $scope.show_video = false;
+             $scope.show_image = true;
+             $scope.kulfy_image_url = '';
+             promise.then(function(data){
+                $scope.$emit('kulfyDetailed', data);
+                if(data.content_type === 'story' ){
+                    $scope.show_image = false;
+                    $scope.kulfy_image_url =  data.image_url;
+                    $scope.show_video = false;
+                    $scope.showKulfyTV = false;
+                    $scope.showKulfyStories = true;
+                    $scope.detail_image_url =  data.original_gif;
+                    $scope.share_url = data.image_url;
+                    console.log(data.story_ids);
+                    console.log('showing kulfy tv',controller.videos);
+            var tv = data.story_ids
+            var tv_item = {};
+
+
+            while(controller.videos.length > 0) {
+                controller.videos.pop();
+            }
+
+
+             for(var i=0;i<tv.length;i++) {
+                tv_item ={
+                sources: [
+                    {src: "https://j.gifs.com/"+tv[i]+".mp4" , type: "video/mp4"},
+                ]
+            };
+                controller.videos.push(tv_item);
+                tv_item = {};
+             }
+      
+                }
+
+             })
         
 
     $scope.showTV = function(){
 
         $scope.showImage = false;
     var kulfy_item = '';
-
-    console.log($scope.players);
-    console.log($scope.item1);
-    console.log(controller.videos);
-    console.log('test 123',controller.kulfy_id);
     //$scope.players.pause();
     
     var redirect = 'kulfy/'+controller.kulfy_id;
@@ -184,7 +224,6 @@ myApp.controller('HomeCtrl',
   }
 
         $scope.showDetails = function (){
-            https://j.gifs.com/wjGgOX.mp4
             var temp = controller.videos[controller.currentVideo].sources[0].src;
             temp = temp.replace('https://j.gifs.com/','');
             var kulfy_id = temp.replace('.mp4','');
@@ -200,7 +239,7 @@ myApp.controller('HomeCtrl',
         }
 
         $scope.mute = function (){
-            controller.API.setVolume(0);
+            
         }
 
         $rootScope.$on('showHome', function(event, data) {
@@ -208,29 +247,12 @@ myApp.controller('HomeCtrl',
         });
 
          $rootScope.$on('kulfyDetailed', function(event, data) {
+                
                 $scope.showKulfyTV = false;
-
-                if(data.content_type === 'story'){
-                    $scope.show_video = false;
-                    $scope.show_image = false;
-                    $scope.showKulfyTV = false;
-                    $scope.showKulfyStories = true;
-                    $scope.detail_image_url =  data.original_gif;
-                    $scope.share_url = data.image_url;
-                    console.log(data.kulfy_ids);
-                    console.log('showing kulfy tv',controller.videos);
-            var tv = data.kulfy_ids
-            var tv_item = {};
-             for(var i=0;i<tv.length;i++) {
-                tv_item ={
-                sources: [
-                    {src: tv[i], type: "video/mp4"},
-                ]
-            };
-                controller.videos.push(tv_item);
-                tv_item = {};
-             }
-                }
+                if(data.click){
+                  controller.API.setVolume(0);
+                  $scope.showKulfyStories = false;
+                }     
           });
 
          $rootScope.$on('pauseDetail', function(event, data) {
@@ -266,16 +288,29 @@ myApp.controller('HomeCtrl',
                 controller.setVideo(controller.currentVideo);
             };
 
+            controller.onCompleteStory = function(API) {
+                controller.isCompleted = true;
+
+                controller.currentVideo++;
+
+                if (controller.currentVideo >= controller.videos.length){
+                    controller.API = API;
+                    controller.API.stop();
+                } 
+
+                controller.setVideo(controller.currentVideo);
+            };
+
             controller.videos = [
             {
                 sources: [
-                    {src: "https://j.gifs.com/wjGgOX.mp4", type: "video/mp4"},
+                    {src: "https://j.gifs.com/66g7oR.mp4", type: "video/mp4"},
                 ]
             }
         ];
 
             controller.config = {
-                preload: "none",
+                preload: "'preload'",
                 autoHide: false,
                 autoHideTime: 3000,
                 autoPlay: false,
@@ -298,6 +333,7 @@ myApp.controller('HomeCtrl',
     );
 
 myApp.controller('SearchController', function($scope,$location,kulfyService,MovieRetriever){
+
 
 
 	if(localStorage.getItem("language")){
@@ -371,11 +407,11 @@ $scope.change=function(a,b,index){
 $scope.getData=function(data){
 	
 	
-	for(i=0;i<$scope.data.length;i++){
+	for(i=0;i<3;i++){
 		//if($scope.data[i].checked)
 			languages.push($scope.data[i]);
 	}
-	for(i=0;i<$scope.type.length;i++){
+	for(i=0;i<3;i++){
 		//if($scope.type[i].checked)
 			kulfies.push($scope.type[i]);
 	}
@@ -388,6 +424,7 @@ console.log(localStorage.getItem("language"));
 	
 	
 } 
+
 $scope.show_search = true;
   $scope.movies = MovieRetriever.getmovies("");
   $scope.movies.then(function(data){
@@ -509,6 +546,17 @@ $rootScope.$on('pauseDetail', function(event, data) {
 
   $scope.$on('kulfyDetailed', function(event, data) {
     $scope.show_details = true;
+
+                console.log('Kulfy details',data);
+                if(data.content_type === 'story' ){
+                    $scope.show_image = false;
+                    $scope.show_video = false;
+                    $scope.detail_image_url =  data.image_url;
+                    $scope.share_url = data.image_url;
+                    controller.config.sources =[
+                    {src: $sce.trustAsResourceUrl(data.video_url), type: "video/mp4"}
+                    ]
+                }
                 
                 if(data.content_type === 'gif'){
                     $scope.show_video = false;
@@ -534,76 +582,12 @@ $rootScope.$on('pauseDetail', function(event, data) {
                 }
                 $scope.kulfy_name = data.name;
                 $scope.kulfy_tags = data.category;
-                $scope.url = 'https://kulfyapp.com/kulfy/'+data.kulfy_id;
+                $scope.url = 'https://kulfyapp.com/kulfy/'+((typeof data.kulfy_id == 'undefined') ? data.giphy_id  : data.kulfy_id);
 
         window.scrollTo(0,0);
   });
 
-
- /* controller.onPlayerReady = function(API) {
-                controller.API = API;
-                controller.API.setVolume(0);
-            };
-
-            controller.next = function() {
-                controller.isCompleted = true;
-
-                controller.currentVideo++;
-
-                if (controller.currentVideo >= controller.videos.length) controller.currentVideo = 0;
-
-                controller.setVideo(controller.currentVideo);
-            };
-
-            controller.onCompleteVideo = function() {
-                controller.isCompleted = true;
-
-                controller.currentVideo++;
-
-                if (controller.currentVideo >= controller.videos.length) controller.currentVideo = 0;
-
-                controller.setVideo(controller.currentVideo);
-            };
-
-            controller.videos = [
-            {
-                sources: [
-                    {src: "https://j.gifs.com/wjGgOX.mp4", type: "video/mp4"},
-                ]
-            }
-        ];
-
-            controller.config = {
-                preload: "none",
-                autoHide: false,
-                autoHideTime: 3000,
-                autoPlay: false,
-                sources: controller.videos[0].sources,
-                theme: {
-                    url: "https://unpkg.com/videogular@2.1.2/dist/themes/default/videogular.css"
-                },
-                plugins: {
-                    poster: "https://kulfyapp.com/logo.png"
-                }
-            };
-
-            controller.setVideo = function(index) {
-                controller.API.stop();
-                controller.currentVideo = index;
-                controller.config.sources = controller.videos[index].sources;
-                $timeout(controller.API.play.bind(controller.API), 100);
-            };
-  
-            var controller = this;
-            controller.state = null;
-            controller.API = null;
-            controller.currentVideo = 0;
-
-            controller.onPlayerReady = function(API) {
-                controller.API = API;
-            };
-
- */          this.config = {
+          this.config = {
                 preload: "none",
                 tracks: [
                     {
@@ -687,6 +671,7 @@ myApp.controller('DetailCtrl',
 
     var redirect = 'kulfy/'+kulfy_item.kulfy_id;
     $location.path(redirect);
+    kulfy_item.click = true;
     $scope.$emit('kulfyDetailed', kulfy_item);
   }
 
@@ -1004,6 +989,16 @@ myApp.factory('Reddit', function($http) {
   Reddit.prototype.getSearchResults = function() {
     if (this.busy) return;
         this.busy = true;
+
+    var lang = localStorage.language;
+    if(typeof lang == 'undefined'){
+        lang = ["hindi","telugu","tamil"];    
+    }else{
+        lang = JSON.parse(lang);
+        lang = lang.map(lan => lan.language);
+    }
+    console.log(lang);
+    this.language = lang.join(',');
 
     var url = "https://api.kulfyapp.com/gifs/getDashboard?skip="+this.after+"&limit=101&language="+this.language+"&content="+this.content_type;
     if(this.request_type !== 'dashboard'){
